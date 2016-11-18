@@ -21,4 +21,7 @@ ENV PATH $GOPATH/bin:/usr/local/go/bin:$PATH
 
 RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 777 "$GOPATH"
 RUN echo '\nPATH=$GOPATH/bin:/usr/local/go/bin:$PATH\n' >>  ~vsts/.profile
+RUN source ~vsts/.profile
+RUN go get -u github.com/govend/govend
+RUN go install github.com/govend/govend
 COPY go-wrapper /usr/local/bin/
